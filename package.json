@@ -1,0 +1,17 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "Project to learn web scrapping with nodejs and react",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node -r esm index.js"
+  },
+  "author": "Shadrach Temitayo <shadrachtemitayo@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "esm": "^3.2.22"
+  }
+}
