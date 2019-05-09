@@ -1,20 +1,19 @@
-import {
-  getHTML,
-  getTwitterFollowers,
-  getInstagramFollowers
-} from './lib/scrapper.js';
+import express from 'express';
+import './lib/cron';
 
-async function go() {
-  const tPromise = getHTML('https://twitter.com/oloyedeshadrach');
-  const iPromise = getHTML('https://instagram.com/shadrachtemitayo');
+const app = express();
+app.use(express.json());
 
-  const [instagramHtml, twitterHtml] = await Promise.all([iPromise, tPromise]);
+app.get('/scrape', async (req, res, next) => {
+  console.log('Scraping');
+  const [iCount, tCount] = await Promise.all([
+    getInstagramCount(),
+    getTwitterCount()
+  ]);
 
-  const twCount = await getTwitterFollowers(twitterHtml);
-  const instagramCount = await getInstagramFollowers(instagramHtml);
+  res.json({ iCount, tCount });
+});
 
-  console.log(`You have ${instagramCount} instagram followers and ${twCount} twitter followers`)
-  
-}
-
-go();
+app.listen(2900, () =>
+  console.log('App is listening on http://localhost:2900')
+);

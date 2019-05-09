@@ -4,14 +4,18 @@
   "description": "Project to learn web scrapping with nodejs and react",
   "main": "index.js",
   "scripts": {
-    "dev": "node -r esm index.js"
+    "dev": "nodemon -r esm index.js --ignore db.json"
   },
   "author": "Shadrach Temitayo <shadrachtemitayo@gmail.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
-    "esm": "^3.2.22"
+    "esm": "^3.2.22",
+    "express": "^4.16.4",
+    "lowdb": "^1.0.0",
+    "node-cron": "^2.0.3"
   }
 }
